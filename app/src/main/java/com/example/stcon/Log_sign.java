@@ -7,13 +7,25 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Log_sign extends AppCompatActivity {
+public class Log_sign extends AppCompatActivity implements View.OnClickListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_sign);
         getSupportActionBar().hide();
-        signupform();
+        Button register = (Button)findViewById(R.id.sign);
+    }
+    public void login()
+    {
+        Button login = (Button)findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (Log_sign.this,Chat.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     public void signupform()
     {
@@ -32,6 +44,11 @@ public class Log_sign extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

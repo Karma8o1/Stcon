@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,14 +8,19 @@
     tools:context=".Log_sign"
     android:background="#CB0F82E8"
     >
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/signup"
+        />
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="150sp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/logos"/>
+        android:src="@drawable/logos"
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_height="wrap_content"
@@ -24,21 +30,21 @@
         android:textColorHint="@color/white"
         android:autofillHints="false"
         >
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:id="@+id/username"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="70sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
-        android:hint="Username"
-        android:paddingLeft="10sp"
-        android:textColorHint="@color/white"
-        android:textStyle="bold"
-        android:autofillHints="false"
-        android:backgroundTint="#003D97E6"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:id="@+id/username"
+            android:layout_below="@id/logo"
+            android:layout_marginTop="70sp"
+            android:layout_marginStart="20sp"
+            android:layout_marginEnd="20sp"
+            android:hint="Username"
+            android:paddingLeft="10sp"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:autofillHints="false"
+            android:backgroundTint="#003D97E6"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -100,4 +106,5 @@
         android:textStyle="bold"
         app:cornerRadius="50sp"
         />
+
 </RelativeLayout>
