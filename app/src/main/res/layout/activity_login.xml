@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".login"
     android:background="#CB0F82E8">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/sign">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
@@ -146,18 +149,18 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="55sp"
         android:layout_below="@id/cities"
         android:layout_marginStart="50sp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="50sp"
-        android:backgroundTint="#3593E6"
+        android:backgroundTint="#CC3593E6"
         android:gravity="center"
         android:text="REGISTER/SIGNUP"
         android:textSize="14sp"
         android:textStyle="bold"
         app:cornerRadius="50sp" />
-
+    </RelativeLayout>
 </RelativeLayout>

@@ -8,11 +8,7 @@
     tools:context=".Log_sign"
     android:background="#CB0F82E8"
     >
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/signup"
-        />
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
@@ -91,7 +87,7 @@
         />
 
     <Button
-        android:id="@+id/sign"
+        android:id="@+id/signin"
         android:layout_width="match_parent"
         android:layout_height="60sp"
         android:layout_below="@id/login"
