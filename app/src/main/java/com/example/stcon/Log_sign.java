@@ -32,10 +32,13 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
         signup.setOnClickListener(this);
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(this);
+        progressDialog = new ProgressDialog(this);
     }
+
+
     public void signup()
     {
-        Intent intent = new Intent (Log_sign.this,login.class);
+        Intent intent = new Intent (Log_sign.this,signup.class);
         startActivity(intent);
     }
     public void login()
@@ -57,11 +60,13 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
         }
         progressDialog.setMessage("Please Wait....");
         progressDialog.show();
-        firebaseAuth.signInWithEmailAndPassword(emails,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(emails,pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
                 {
+                    progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),"Login SuccessFul",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Log_sign.this,Chat.class);
                     startActivity(intent);
@@ -69,6 +74,7 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
                 }
                 else
                 {
+                    progressDialog.cancel();
                     email.setText("");
                     password.setText("");
                     Toast.makeText(getApplicationContext(),"Login Unsuccessful",Toast.LENGTH_SHORT).show();
@@ -77,17 +83,19 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
-
     @Override
     public void onClick(View v) {
-    switch (v.getId())
-    {
-        case R.id.signin:
-            signup();
-            break;
-        case R.id.login:
-            login();
-            break;
-    }
+        switch (v.getId())
+        {
+            case R.id.signin:
+                signup();
+                break;
+            case R.id.login:
+                login();
+                break;
+            default:
+                Toast.makeText(getApplicationContext(),"Something is Wrong",Toast.LENGTH_LONG).show();
+                break;
+        }
     }
 }
