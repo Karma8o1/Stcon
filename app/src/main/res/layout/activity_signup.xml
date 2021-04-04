@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50sp"
                 android:id="@+id/DOB"
-                android:inputType="datetime"
+                android:inputType="textNoSuggestions"
                 android:layout_below="@id/pass"
                 android:layout_marginTop="5sp"
                 android:layout_marginStart="20sp"
