@@ -81,7 +81,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
                             }
                                 else
                                 {
-                                    Toast.makeText(getApplicationContext(),"Unable to Register",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),"Unable to store data",Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
