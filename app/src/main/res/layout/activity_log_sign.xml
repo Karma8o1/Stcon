@@ -34,7 +34,7 @@
             android:layout_marginTop="70sp"
             android:layout_marginStart="20sp"
             android:layout_marginEnd="20sp"
-            android:hint="Username"
+            android:hint="Email"
             android:paddingLeft="10sp"
             android:textColorHint="@color/white"
             android:textStyle="bold"
@@ -70,6 +70,17 @@
             android:background="#009F8585"
             />
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forget Password?"
+        android:layout_below="@id/pass"
+        android:layout_marginStart="280sp"
+        android:layout_marginTop="-15sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:id="@+id/forget"
+        />
     <Button
         android:layout_width="match_parent"
         android:layout_height="65sp"
