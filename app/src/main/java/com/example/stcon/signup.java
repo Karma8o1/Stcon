@@ -9,14 +9,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
 
 public class signup extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private DatabaseReference mDatabase;
     private Button register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +58,34 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful())
                     {
-                        Toast.makeText(getApplicationContext(),"User Registered, Please Login",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent (signup.this,Log_sign.class);
-                        startActivity(intent);
-                        finish();
+                        FirebaseUser current_user =FirebaseAuth.getInstance().getCurrentUser();
+                        String uid= current_user.getUid();
+                        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+
+                        String device_token = FirebaseInstanceId.getInstance().getToken();
+
+                        HashMap<String, String> userMap = new HashMap<>();
+                        userMap.put("name", username);
+                        userMap.put("DOB", dob);
+                        userMap.put("city", city);
+                        userMap.put("image", "default");
+                        userMap.put("device_token", device_token);
+                        mDatabase.setValue(userMap).addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                Toast.makeText(getApplicationContext(),"User Registered, Please Login",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent (signup.this,Log_sign.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                                else
+                                {
+                                    Toast.makeText(getApplicationContext(),"Unable to Register",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
                     }
                     else
                     {
