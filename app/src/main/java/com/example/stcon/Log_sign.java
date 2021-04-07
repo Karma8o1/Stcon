@@ -7,6 +7,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,8 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
     private ProgressDialog progressDialog;
     private Button signup;
     private Button login;
+    private TextView forget;
+    private PopupWindow popUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,8 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
         signup.setOnClickListener(this);
         login = (Button)findViewById(R.id.login);
         login.setOnClickListener(this);
+        forget = (TextView)findViewById(R.id.forget);
+        forget.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
     }
 
@@ -83,6 +89,10 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
+    public void forget(){
+
+        Toast.makeText(this,"Enter Credentials",Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId())
@@ -92,6 +102,9 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
                 break;
             case R.id.login:
                 login();
+                break;
+            case R.id.forget:
+                forget();
                 break;
             default:
                 Toast.makeText(getApplicationContext(),"Something is Wrong",Toast.LENGTH_LONG).show();
