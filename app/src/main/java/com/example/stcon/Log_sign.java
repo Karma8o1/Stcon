@@ -7,7 +7,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +24,6 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
     private Button signup;
     private Button login;
     private TextView forget;
-    private PopupWindow popUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +88,6 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
         });
     }
     public void forget(){
-
         Toast.makeText(this,"Enter Credentials",Toast.LENGTH_SHORT).show();
     }
     @Override
