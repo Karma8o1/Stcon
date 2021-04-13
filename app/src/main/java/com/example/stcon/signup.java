@@ -65,7 +65,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
                         String device_token = FirebaseInstanceId.getInstance().getToken();
 
                         HashMap<String, String> userMap = new HashMap<>();
-                        userMap.put("name", username);
+                        userMap.put("Displayname", username);
                         userMap.put("DOB", dob);
                         userMap.put("city", city);
                         userMap.put("image", "default");
@@ -97,7 +97,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()){
+            case R.id.register:
         EditText username = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
         EditText emails = (EditText)findViewById(R.id.email);
@@ -106,9 +107,12 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
 
         String user = username.getText().toString().trim();
         String pass = password.getText().toString().trim();
-        String email = emails.getText().toString().trim();
+        String email = emails.getText().toString().toLowerCase().trim();
         String dob = DOB.getText().toString().trim();
         String City = city.getText().toString().trim();
         signup(email,pass,user,dob,City);
+            default:
+                return;
+        }
     }
 }

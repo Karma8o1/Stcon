@@ -49,7 +49,7 @@ public class Log_sign extends AppCompatActivity implements View.OnClickListener{
     {
         EditText email = (EditText)findViewById(R.id.username);
         EditText password = (EditText)findViewById(R.id.password);
-        String emails = email.getText().toString().trim();
+        String emails = email.getText().toString().toLowerCase().trim();
         String pass = password.getText().toString().trim();
         if (TextUtils.isEmpty(emails))
         {
